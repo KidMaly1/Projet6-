@@ -72,6 +72,3 @@ closeButton.addEventListener("click", function () {
 }
 )
 
-
-
-cde

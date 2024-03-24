@@ -102,4 +102,3 @@ previousModal.addEventListener("click", () => {
 
 
 
-dec
