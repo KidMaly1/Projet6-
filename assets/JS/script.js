@@ -1,10 +1,11 @@
 var allworks = {};
+
 async function loadWorks() {
     const reponse = await fetch("http://localhost:5678/api/works");
     allworks =  await reponse.json();
     const reponsecategories = await fetch("http://localhost:5678/api/categories");
     const categories =  await reponsecategories.json();
-    console.log(categories)
+    
     genererTravaux(allworks);
     genererImagesModale(allworks);
     boutonCategories(categories)
@@ -16,6 +17,7 @@ function initializePage() {
   }
   window.addEventListener("load", initializePage);
 
+// Ajout des travaux dynamiquement 
 
 const gallerycontainer = document.querySelector(".gallery")
 
@@ -85,7 +87,7 @@ btns[i].addEventListener("click", filtres)
 }
 }
 
-
+// Filtrer les travaux par catégories 
 function filtres () {
 
     console.log(this)
@@ -96,7 +98,7 @@ function filtres () {
         genererTravaux(allworks)
     } else {
         const filtreHotels = allworks.filter((work) =>
-    work.category.id == category_id);
+        work.category.id == category_id);
 
     
 

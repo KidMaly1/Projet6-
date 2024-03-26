@@ -395,7 +395,7 @@ dialog {
 .addPhoto {
 	height: 40px;
 	width: 185px;
-	background-color: aquamarine;
+	background-color: rgb(191, 189, 189);
 	border-radius: 20px;
 	display: flex;
 	align-items: center;
