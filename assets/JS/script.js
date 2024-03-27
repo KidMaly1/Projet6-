@@ -5,7 +5,7 @@ async function loadWorks() {
     allworks =  await reponse.json();
     const reponsecategories = await fetch("http://localhost:5678/api/categories");
     const categories =  await reponsecategories.json();
-    
+    console.log(allworks)
     genererTravaux(allworks);
     genererImagesModale(allworks);
     boutonCategories(categories)
@@ -43,7 +43,7 @@ for (let i = 0; i < works.length; i++) {
     elements.appendChild(elementsTitle);
     
     
-    }
+    } 
 }
 
 

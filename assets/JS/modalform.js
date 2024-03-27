@@ -8,17 +8,26 @@ e.preventDefault();
 
     const  formData = new FormData();
     const imgModal = document.getElementById("imgUrl");
+    
 
     const file = imgModal.files[0]    
 
-    
+    imgDisplayPreview ()
 
     formData.append("image", file);
     formData.append("title", document.getElementById("title").value);
     formData.append("category", document.getElementById("category").value);
     
-    
-    
+    // Afficher l'image selectionnée 
+    document.getElementById('imgUrl').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var imgPreview = document.getElementById('imgPreview');
+            imgPreview.innerHTML = '<img src="' + e.target.result + '"/>';
+        };
+        reader.readAsDataURL(file);
+    });
 
     console.log(formData);
 
@@ -50,6 +59,8 @@ e.preventDefault();
     }
     )}
 )
+
+
 
             // fermer la deuxième fenêtre modale 
     async function closeTheModal () {

@@ -52,7 +52,9 @@ function genererImagesModale(works) {
             fetch("http://localhost:5678/api/works/"+worksId, {
         method: "DELETE",
         headers: {"Content-Type": "application/json", 
-                "Authorization":"Bearer "+localStorage.getItem("token")}
+                "Authorization":"Bearer "+localStorage.getItem("token")},
+        
+
         
     }).then(function (response) {
         console.log(response)
@@ -62,7 +64,7 @@ function genererImagesModale(works) {
         }).then(function(allworks){
             console.log(allworks)
             genererImagesModale(allworks);
-            //genererTravaux(allworks);
+            genererTravaux(allworks);
         });
 
         

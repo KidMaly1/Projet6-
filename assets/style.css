@@ -340,6 +340,7 @@ dialog {
 
 .secondModal {
 	z-index: 99;
+	overflow-x: hidden;
 }
 
 .modal-two {
