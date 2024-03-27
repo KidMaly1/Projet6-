@@ -436,3 +436,11 @@ dialog {
 	display: flex;
 	align-items: center;
 }
+
+#imgPreview img {
+	height: 150px;
+    display: block;
+    position: absolute;
+    margin-left: -54px;
+    margin-top: -60px;
+}

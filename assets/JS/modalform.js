@@ -6,30 +6,29 @@ modalForm.addEventListener("submit", (e) => {
 
 e.preventDefault();
 
+// Récupérer les valeurs des champs
+const titleValue = document.getElementById("title").value.trim();
+const categoryValue = document.getElementById("category").value.trim();
     const  formData = new FormData();
     const imgModal = document.getElementById("imgUrl");
     
 
     const file = imgModal.files[0]    
 
-    imgDisplayPreview ()
-
     formData.append("image", file);
     formData.append("title", document.getElementById("title").value);
     formData.append("category", document.getElementById("category").value);
-    
-    // Afficher l'image selectionnée 
-    document.getElementById('imgUrl').addEventListener('change', function(event) {
-        var file = event.target.files[0];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var imgPreview = document.getElementById('imgPreview');
-            imgPreview.innerHTML = '<img src="' + e.target.result + '"/>';
-        };
-        reader.readAsDataURL(file);
-    });
 
+    // Vérifier si tous les champs sont remplis
+    if (titleValue === '' || categoryValue === '' || !file) {
+        // Afficher un message d'erreur
+        alert('Veuillez remplir tous les champs du formulaire.');
+        return; // Arrêter l'exécution de la fonction
+    }
+    
     console.log(formData);
+
+    
 
     fetch("http://localhost:5678/api/works",{
         method : "POST",
@@ -60,9 +59,23 @@ e.preventDefault();
     )}
 )
 
+    // Afficher l'image selectionnée 
+    document.getElementById('imgUrl').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    const fileButton = document.querySelector(".file-button");
 
+    reader.onload = function(e) {
+        var imgPreview = document.getElementById('imgPreview');
+        imgPreview.innerHTML = '<img src="' + e.target.result + '"/>';
+    };
+    reader.readAsDataURL(file);
 
-            // fermer la deuxième fenêtre modale 
+    fileButton.style.display = "none";
+
+});
+
+    // Fermer la deuxième fenêtre modale 
     async function closeTheModal () {
         try{
         const reponse = await fetch("http://localhost:5678/api/works");
